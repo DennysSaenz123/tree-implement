@@ -13,7 +13,10 @@ public class Traversal {
     root.right.right = new TreeNode(5);
     root.right.right.right = new TreeNode(22);
 
-    preOrder(root);
+    // preOrder(root);
+    // System.out.println();
+    int result = sumOdd(root);
+    System.out.println(result);
   }
 
   public static void preOrder(TreeNode current){
@@ -23,5 +26,26 @@ public class Traversal {
       preOrder(current.left);
       preOrder(current.right);
 
+  }
+  public static int sumAll(TreeNode node){
+    if(node == null) return 0;
+    int total = node.data;
+    total += sumAll(node.left);
+    total += sumAll(node.right);
+    return total;
+  }
+
+  public static int sumOdd(TreeNode node){
+    if(node == null) return 0;
+    int total = 0;
+
+    if(node.data %2 != 0){
+      total += node.data;
+    }
+
+    total += sumOdd(node.left);
+    total += sumOdd(node.right);
+
+    return total;
   }
 }
