@@ -27,25 +27,19 @@ public class Traversal {
       preOrder(current.right);
 
   }
-  public static int sumAll(TreeNode node){
-    if(node == null) return 0;
-    int total = node.data;
-    total += sumAll(node.left);
-    total += sumAll(node.right);
-    return total;
+
+  public static void inOrder(TreeNode current){
+    if(current == null) return;
+    inOrder(current.left);
+    System.out.println(current.data);
+    inOrder(current.right);
   }
 
-  public static int sumOdd(TreeNode node){
-    if(node == null) return 0;
-    int total = 0;
+  public static void postOrder(TreeNode current){
+    if(current == null) return;
+    postOrder(current.left);
+    postOrder(current.right);
+    System.out.println(current.data);
+  }   
 
-    if(node.data %2 != 0){
-      total += node.data;
-    }
-
-    total += sumOdd(node.left);
-    total += sumOdd(node.right);
-
-    return total;
-  }
-}
+  
